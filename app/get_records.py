@@ -1,8 +1,7 @@
-import json
-import os
 import sublist3r
 import requests
 import dns.resolver
+import concurrent.futures
 
 def get_dns_records(url):
     dns_records = {}
@@ -25,21 +24,26 @@ def get_dns_records(url):
         except Exception as e:
             dns_records[record_type] = [f"Error retrieving {record_type} record: {e}"]
 
-    return dns_records
+    return url, dns_records
 
 def enumerate_and_get_dns_records(domain):
     # Use Sublist3r to find subdomains
-    subdomains = sublist3r.main(domain, 40, savefile=None, ports=None, silent=True, verbose=False, enable_bruteforce=False, engines=None)
+    subdomains = sublist3r.main(domain, 40, savefile=None, ports=None, silent=False, verbose=True, enable_bruteforce=False, engines="PassiveDNS,SSL")
     
     records_complete = {}
-    for subdomain in subdomains:
-        print(f"Retrieving DNS records for {subdomain}")
-        records = get_dns_records(subdomain)
-        if any(records.values()):
-            print(f"Found records for {subdomain}: {records}")
-            records_complete[subdomain] = records
+    futures = []
 
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        for subdomain in subdomains:
+            print(f"Retrieving DNS records for {subdomain}")
 
+            # Submit the task to the executor and store the future object
+            futures.append(executor.submit(get_dns_records, subdomain))
+
+        for future in concurrent.futures.as_completed(futures):
+            subdomain, records = future.result()
+            if any(records.values()):
+                records_complete[subdomain] = records
 
     return records_complete
 
@@ -59,8 +63,3 @@ def load_manifest_data(dns_records):
 
     return manifest_data
 
-
-if __name__ == '__main__':
-    domain = 'fl2f.ca'
-    dns_records = enumerate_and_get_dns_records(domain)
-    print(dns_records)
