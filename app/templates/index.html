@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL2F Subdomains</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .subdomain { margin-bottom: 20px; }
+        .subdomain h2 { margin: 0; }
+        .link { margin-left: 20px; }
+    </style>
+</head>
+<body class="main">
+    <div class="container">
+        <h1>FL2F Subdomains</h1>
+        {% for subdomain, records in dns_records.items() %}
+        <div class="subdomain">
+            <h2>{{ subdomain }}</h2>
+            <div class="link">
+                <a href="https://{{ subdomain }}" target="_blank">{{ subdomain }}</a>
+            </div>
+
+            {% if subdomain in subdomain_data %}
+                <div class="short-name">
+                    Short Name: {{ subdomain_data[subdomain]["short_name"] }}
+                </div>
+                {% for link in subdomain_data[subdomain]['links'] %}
+                    <div class="link">
+                        {{ link.description }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a>
+                    </div>
+                {% endfor %}
+
+
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

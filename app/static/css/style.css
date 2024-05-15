@@ -1,0 +1,206 @@
+.main p {
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #777;
+  }
+  
+  .main h2 {
+    line-height: 1.66;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    color: #222;
+    font-family: Poppins;
+    font-size: 36px;
+  }
+  
+  .main {
+    padding: 150px 0;
+  }
+  
+  .clear {
+    clear: both;
+  }
+  
+  .main body {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #222;
+    background: #f8f8f8;
+    font-weight: 400;
+    font-family: Poppins;
+  }
+  
+  .main .container {
+    width: 900px;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 0 15px 16.83px .17px rgba(0,0,0,.05);
+    border-radius: 20px;
+  }
+  
+  .main .display-flex {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .main .display-flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .main .position-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .main .signup {
+    margin-bottom: 150px;
+  }
+  
+  .main .signup-content {
+    padding: 75px 0;
+  }
+  
+  .main .signup-image {
+    margin: 0 55px;
+  }
+  
+  .main .form-title {
+    margin-bottom: 33px;
+  }
+  
+  .main .signup-image {
+    margin-top: 45px;
+  }
+  
+  .main .form-submit {
+    display: inline-block;
+    background: #6dabe4;
+    color: #fff;
+    border: none;
+    width: auto;
+    padding: 15px 39px;
+    border-radius: 5px;
+    margin-top: 25px;
+    cursor: pointer;
+  }
+  
+  .main .form-submit:hover {
+    background: #4292dc;
+  }
+  
+  .main .signup-image-link {
+    font-size: 14px;
+    color: #222;
+    display: block;
+    text-align: center;
+  }
+  
+  .main .signup-form {
+    padding: 45px;
+    text-align: center;
+  }
+  
+  .main .register-form {
+    width: 100%;
+  }
+  
+  .main .form-group {
+    position: relative;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+  
+  .main .form-group:last-child {
+    margin-bottom: 0;
+  }
+  
+  .main .signin-form {
+    margin-right: 90px;
+    margin-left: 80px;
+  }
+  
+  .main .signin-image {
+    margin-left: 110px;
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  
+  .short_name {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  @media screen {
+    .container {
+      width: calc(100% - 200px);
+      max-width: 100%;
+    }
+  }
+  
+  @media screen {
+    .container {
+      max-width: 600px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .signup-content, .signin-content {
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .signup-form {
+      margin-left: 0;
+      margin-right: 0;
+      padding: 0 30px;
+    }
+  
+    .signin-image {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 50px;
+      order: 2;
+    }
+  
+    .signup-form, .signup-image, .signin-form, .signin-image {
+      width: auto;
+    }
+  
+    .social-login {
+      justify-content: center;
+    }
+  
+    .form-button {
+      text-align: center;
+    }
+  
+    .signin-form {
+      order: 1;
+      margin-right: 0;
+      margin-left: 0;
+      padding: 0 30px;
+    }
+  
+    .form-title {
+      text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .social-login {
+      flex-direction: column;
+    }
+  
+    .social-label {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
