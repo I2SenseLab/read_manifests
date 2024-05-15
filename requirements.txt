@@ -1,4 +1,6 @@
 dnspython==2.3.0
-sublistr3r==1.0
+Sublist3r==1.0.0
 termcolor==2.3.0
 Flask==2.1.0
+gunicorn==20.1.0
+Werkzeug==2.0.3
